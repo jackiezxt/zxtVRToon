@@ -48,7 +48,7 @@ except:
 
 
 class MainWindow( QWidget ):
-    def __init__(self):
+    def __init__(self，parent=None):
         self._vr = zxtVRayCTRL_utils.zxtVRayCTRL()
         self._rl = renderSetup_utils
         self._filepath = 'T:/maya/Assets/M_AST/M_AST_vrRimGrad.ma'
@@ -59,7 +59,7 @@ class MainWindow( QWidget ):
         self.toon_mtl_list = None
 
         # 窗口固有属性-------------------------------
-        super( MainWindow, self ).__init__()
+        super( MainWindow, self ).__init__(parent)
         self.setWindowTitle( 'ZXTO_VrayToon工具' )  # 设置窗口标题
         self.resize( 1, 1 )  # 设置窗口尺寸
         self.setWindowFlags(
