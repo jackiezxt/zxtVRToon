@@ -12,7 +12,7 @@
 ```python
 import sys
 
-path=r'c:\abcdefg\zxtVRayCTRL'
+path=r'c:\abcdefg'
 if path not in sys.path:
 	sys.path.append(path)
 	
@@ -27,6 +27,8 @@ zxtVRayCTRL.zxtVRayToon.run()
 ```
 
 **maya版本**：2018.5
+
+**V-ray**: V-Ray Next v4.12.02
 
 **操作系统**：win10 1903版本以上
 
