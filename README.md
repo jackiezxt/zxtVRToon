@@ -6,7 +6,7 @@
 ## Asset Part
 这个部分主要是在镜头制作中用来reference的文件，目录地址放置在：`T:\maya`目标下
 ## zxtVRayCTRL Part
-这个部分主要是工具，用于在maya中执行，下载下来后，放在一个随便什么空文件下，比如放在：`c:\abcdefg`下，然后在maya窗口中执行
+这个部分主要是工具，用于在maya中执行，下载下来后，放在一个随便什么空文件下，比如放在：`d:\plugins`下，然后将maya.env和userSetup,以及zxtVRayCTRL.mod文件，根据自己的工作环境放在相对应的目录下面，接在在maya窗口中执行
 
 ![](http://www.zxto.top:30000//johnny/mypicgo/uploads/6ca6484b3b9e02da2c882b9f9d427297/20200312032835.png)
 ```python
