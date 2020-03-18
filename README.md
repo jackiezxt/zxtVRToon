@@ -12,13 +12,6 @@
 ```python
 import sys
 
-path=r'c:\abcdefg'
-if path not in sys.path:
-	sys.path.append(path)
-	
-import zxtVRayCTRL.ui.MainWindow
-reload(zxtVRayCTRL.ui.MainWindow)
-
 import zxtVRayCTRL.zxtVRayToon
 reload(zxtVRayCTRL.zxtVRayToon)
 
