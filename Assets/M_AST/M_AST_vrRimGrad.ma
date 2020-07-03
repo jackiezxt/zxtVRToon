@@ -1,6 +1,6 @@
 //Maya ASCII 2018ff09 scene
 //Name: M_AST_vrRimGrad.ma
-//Last modified: Wed, Jan 08, 2020 03:51:05 PM
+//Last modified: Wed, Jun 17, 2020 09:49:49 PM
 //Codeset: 936
 requires maya "2018ff09";
 requires -nodeType "VRaySettingsNode" -nodeType "VRayFresnel" -nodeType "VRayFalloff"
@@ -9,6 +9,7 @@ requires -nodeType "VRaySettingsNode" -nodeType "VRayFresnel" -nodeType "VRayFal
 		 -dataType "VRaySunParams" -dataType "vrayFloatVectorData" -dataType "vrayFloatVectorData"
 		 -dataType "vrayIntData" "vrayformaya" "Next";
 requires -nodeType "renderSetup" -nodeType "lightItem" -nodeType "lightEditor" "renderSetup.py" "1.0";
+requires "stereoCamera" "10.0";
 requires "stereoCamera" "10.0";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
@@ -80,7 +81,7 @@ createNode camera -s -n "sideShape" -p "side";
 	setAttr ".hc" -type "string" "viewSet -s %camera";
 	setAttr ".o" yes;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "174F682E-481B-F9C3-BE0A-C8BA911DD3DA";
+	rename -uid "5FF5E47D-42A4-38EC-8C78-D2AD244C8F8A";
 	setAttr -s 3 ".lnk";
 	setAttr -s 3 ".slnk";
 createNode lightEditor -n "lightEditor";
@@ -170,15 +171,15 @@ createNode VRaySettingsNode -s -n "vraySettings";
 	setAttr ".rt_engineType" 3;
 	setAttr ".rt_gpuResizeTextures" 0;
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "9ED84CFF-4F92-98B2-AF80-A9BCCFCC1EFA";
+	rename -uid "A1DA2731-4807-4CDC-8465-F28693004675";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "7DE14164-4D56-ED28-E254-67899703277D";
+	rename -uid "FC70C399-455A-9C84-1641-5EA819B4E2A3";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "0E5F8B02-418B-B446-1A96-7D97E9E99576";
+	rename -uid "D33B0011-497D-88D1-1D5C-65A66DAD9BC4";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "12F375ED-4894-8D05-847B-B899C7175A9F";
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "C1AEE040-4FFE-C74A-33A8-56A985B36943";
+	rename -uid "5C22182F-4C57-1C59-CB9C-57AA59DDD809";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "00DFBD49-48B5-BAA7-3D51-34BB065AF296";
 	setAttr ".g" yes;
@@ -252,9 +253,9 @@ createNode ramp -n "T_RimGradient";
 	rename -uid "79FBDAC7-4181-B882-D64B-D28797796D3B";
 	setAttr ".in" 3;
 	setAttr -s 2 ".cel";
-	setAttr ".cel[0].ep" 0.48915663361549377;
+	setAttr ".cel[0].ep" 0.35172414779663086;
 	setAttr ".cel[0].ec" -type "float3" 0 0 0 ;
-	setAttr ".cel[1].ep" 0;
+	setAttr ".cel[1].ep" 0.34482759237289429;
 	setAttr ".cel[1].ec" -type "float3" 1 1 1 ;
 createNode place2dTexture -n "place2dTexture1";
 	rename -uid "96CAC9C6-48EC-CA6B-FA1A-EBA6707CAC40";
@@ -281,7 +282,7 @@ createNode ramp -n "RimScopeCTRL";
 	rename -uid "2A265AC5-488F-312A-609A-689F96227EF8";
 	setAttr ".in" 0;
 	setAttr -s 2 ".cel";
-	setAttr ".cel[0].ep" 0.077611938118934631;
+	setAttr ".cel[0].ep" 0.48965516686439514;
 	setAttr ".cel[0].ec" -type "float3" 0 0 0 ;
 	setAttr ".cel[1].ep" 0;
 	setAttr ".cel[1].ec" -type "float3" 1 1 1 ;
@@ -291,7 +292,8 @@ createNode VRayFastSSS2 -n "M_vrSSS";
 	rename -uid "E9340511-4688-7CFA-0617-469DA72401DF";
 	setAttr ".gbs" 2;
 	setAttr ".ior" 1.2000000476837158;
-	setAttr ".df" -type "float3" 1 1 1 ;
+	setAttr ".ovt" -type "float3" 0 0 0 ;
+	setAttr ".df" -type "float3" 0 0 0 ;
 	setAttr ".cm" 1;
 	setAttr ".ssc" -type "float3" 0.97360706 0.97360706 0.97360706 ;
 	setAttr ".scrc" -type "float3" 0.97067451 0.97067451 0.97067451 ;
@@ -392,7 +394,7 @@ createNode container -n "M_AST_vrRimGrad";
 	addAttr -ci true -h true -sn "aal" -ln "attributeAliasList" -dt "attributeAlias";
 	addAttr -ci true -sn "nts" -ln "notes" -dt "string";
 	setAttr -s 85 ".boc";
-	setAttr ".icn" -type "string" "S:/Gosh_Project/publicExchange/personal/Johnny/MAYA//scenes/CHA/FXGroup.png";
+	setAttr ".icn" -type "string" "S:/Gosh_Project/publicExchange/personal/Johnny/MAYA/scenes/CHA/FXGroup.png";
 	setAttr ".ctor" -type "string" "johnnyzxt";
 	setAttr ".cdat" -type "string" "2019/12/13 01:00:16";
 	setAttr ".aal" -type "attributeAlias" {"material_0","borderConnections[0]","material_2G"
@@ -470,20 +472,20 @@ createNode hyperLayout -n "hyperLayout1";
 	setAttr ".hyp[10].x" 10;
 	setAttr ".hyp[10].y" 109;
 	setAttr ".hyp[10].isf" yes;
-	setAttr ".hyp[11].x" 890;
-	setAttr ".hyp[11].y" 419;
+	setAttr ".hyp[11].x" 859;
+	setAttr ".hyp[11].y" 379;
 	setAttr ".hyp[11].isf" yes;
 	setAttr ".hyp[12].x" 670;
 	setAttr ".hyp[12].y" 144;
 	setAttr ".hyp[12].isf" yes;
-	setAttr ".hyp[13].x" 1110;
-	setAttr ".hyp[13].y" 412;
+	setAttr ".hyp[13].x" 1130;
+	setAttr ".hyp[13].y" 415;
 	setAttr ".hyp[13].isf" yes;
 	setAttr ".hyp[14].x" 450;
 	setAttr ".hyp[14].y" 133;
 	setAttr ".hyp[14].isf" yes;
-	setAttr ".hyp[15].x" 450;
-	setAttr ".hyp[15].y" 468;
+	setAttr ".hyp[15].x" 483;
+	setAttr ".hyp[15].y" 423;
 	setAttr ".hyp[15].isf" yes;
 	setAttr ".hyp[16].x" 230;
 	setAttr ".hyp[16].y" 269;
@@ -494,11 +496,11 @@ createNode hyperLayout -n "hyperLayout1";
 	setAttr ".hyp[18].x" 230;
 	setAttr ".hyp[18].y" 33;
 	setAttr ".hyp[18].isf" yes;
-	setAttr ".hyp[19].x" 450;
-	setAttr ".hyp[19].y" 558;
+	setAttr ".hyp[19].x" 393;
+	setAttr ".hyp[19].y" 563;
 	setAttr ".hyp[19].isf" yes;
 	setAttr ".hyp[20].x" 230;
-	setAttr ".hyp[20].y" 639;
+	setAttr ".hyp[20].y" 657;
 	setAttr ".hyp[20].isf" yes;
 	setAttr ".hyp[21].x" 230;
 	setAttr ".hyp[21].y" 319;
@@ -533,8 +535,8 @@ createNode hyperLayout -n "hyperLayout1";
 	setAttr ".hyp[31].x" 230;
 	setAttr ".hyp[31].y" 539;
 	setAttr ".hyp[31].isf" yes;
-	setAttr ".hyp[32].x" 670;
-	setAttr ".hyp[32].y" 493;
+	setAttr ".hyp[32].x" 724;
+	setAttr ".hyp[32].y" 520;
 	setAttr ".hyp[32].isf" yes;
 	setAttr ".anf" yes;
 createNode multiplyDivide -n "multiplyDivide3";
@@ -543,115 +545,16 @@ createNode VRayVertexColors -n "T_vrVerTex";
 	rename -uid "1F1BE6DF-46BA-C711-7503-EAB7F770BF69";
 	setAttr ".tp" 1;
 	setAttr ".nm" -type "string" "SpeccolorSet";
-createNode nodeGraphEditorInfo -n "hyperShadePrimaryNodeEditorSavedTabsInfo";
-	rename -uid "1A4AE5BF-45CB-55CA-5BA8-EA96CA4BB3B3";
-	setAttr -s 2 ".tgi";
+createNode nodeGraphEditorInfo -n "MayaNodeEditorSavedTabsInfo";
+	rename -uid "8468E894-4F2D-AE43-A9E0-B1876334FC6E";
 	setAttr ".tgi[0].tn" -type "string" "Untitled_1";
-	setAttr ".tgi[0].vl" -type "double2" -1731.7307004179736 -1847.6189742012659 ;
-	setAttr ".tgi[0].vh" -type "double2" 2549.5878107763951 -688.09521075279099 ;
-	setAttr -s 33 ".tgi[0].ni";
-	setAttr ".tgi[0].ni[0].x" 114.51839447021484;
-	setAttr ".tgi[0].ni[0].y" -563.06695556640625;
+	setAttr ".tgi[0].vl" -type "double2" -622.61902287839052 -301.19046422224244 ;
+	setAttr ".tgi[0].vh" -type "double2" 601.19045230131405 314.28570179712256 ;
+	setAttr ".tgi[0].ni[0].x" -102.85713958740234;
+	setAttr ".tgi[0].ni[0].y" 38.571430206298828;
 	setAttr ".tgi[0].ni[0].nvs" 18304;
-	setAttr ".tgi[0].ni[1].x" 491.89163208007813;
-	setAttr ".tgi[0].ni[1].y" -891.871826171875;
-	setAttr ".tgi[0].ni[1].nvs" 18304;
-	setAttr ".tgi[0].ni[2].x" -79.11614990234375;
-	setAttr ".tgi[0].ni[2].y" -732.94158935546875;
-	setAttr ".tgi[0].ni[2].nvs" 18304;
-	setAttr ".tgi[0].ni[3].x" 429.87130737304688;
-	setAttr ".tgi[0].ni[3].y" -379.35256958007813;
-	setAttr ".tgi[0].ni[3].nvs" 18304;
-	setAttr ".tgi[0].ni[4].x" 234.49954223632813;
-	setAttr ".tgi[0].ni[4].y" -1187.723388671875;
-	setAttr ".tgi[0].ni[4].nvs" 1923;
-	setAttr ".tgi[0].ni[5].x" 487.38851928710938;
-	setAttr ".tgi[0].ni[5].y" -1435.5599365234375;
-	setAttr ".tgi[0].ni[5].nvs" 1923;
-	setAttr ".tgi[0].ni[6].x" -396.6722412109375;
-	setAttr ".tgi[0].ni[6].y" -1587.561279296875;
-	setAttr ".tgi[0].ni[6].nvs" 18304;
-	setAttr ".tgi[0].ni[7].x" 329.59408569335938;
-	setAttr ".tgi[0].ni[7].y" -568.37744140625;
-	setAttr ".tgi[0].ni[7].nvs" 18304;
-	setAttr ".tgi[0].ni[8].x" 498.29754638671875;
-	setAttr ".tgi[0].ni[8].y" -998.49700927734375;
-	setAttr ".tgi[0].ni[8].nvs" 18304;
-	setAttr ".tgi[0].ni[9].x" -82.94049072265625;
-	setAttr ".tgi[0].ni[9].y" -929.85296630859375;
-	setAttr ".tgi[0].ni[9].nvs" 18304;
-	setAttr ".tgi[0].ni[10].x" -172.55172729492188;
-	setAttr ".tgi[0].ni[10].y" -1183.3603515625;
-	setAttr ".tgi[0].ni[10].nvs" 1923;
-	setAttr ".tgi[0].ni[11].x" 504.50466918945313;
-	setAttr ".tgi[0].ni[11].y" -1061.368896484375;
-	setAttr ".tgi[0].ni[11].nvs" 18304;
-	setAttr ".tgi[0].ni[12].x" -318.8638916015625;
-	setAttr ".tgi[0].ni[12].y" -708.07830810546875;
-	setAttr ".tgi[0].ni[12].nvs" 18304;
-	setAttr ".tgi[0].ni[13].x" 435.92575073242188;
-	setAttr ".tgi[0].ni[13].y" -703.4920654296875;
-	setAttr ".tgi[0].ni[13].nvs" 18304;
-	setAttr ".tgi[0].ni[14].x" -449.931884765625;
-	setAttr ".tgi[0].ni[14].y" -1257.038818359375;
-	setAttr ".tgi[0].ni[14].nvs" 18304;
-	setAttr ".tgi[0].ni[15].x" -446.78195190429688;
-	setAttr ".tgi[0].ni[15].y" -1157.4091796875;
-	setAttr ".tgi[0].ni[15].nvs" 18304;
-	setAttr ".tgi[0].ni[16].x" -51.072254180908203;
-	setAttr ".tgi[0].ni[16].y" -1660.1082763671875;
-	setAttr ".tgi[0].ni[16].nvs" 1923;
-	setAttr ".tgi[0].ni[17].x" 481.26699829101563;
-	setAttr ".tgi[0].ni[17].y" -1282.4696044921875;
-	setAttr ".tgi[0].ni[17].nvs" 1923;
-	setAttr ".tgi[0].ni[18].x" -82.7012939453125;
-	setAttr ".tgi[0].ni[18].y" -810.05657958984375;
-	setAttr ".tgi[0].ni[18].nvs" 18304;
-	setAttr ".tgi[0].ni[19].x" 537.4808349609375;
-	setAttr ".tgi[0].ni[19].y" -579.1573486328125;
-	setAttr ".tgi[0].ni[19].nvs" 18304;
-	setAttr ".tgi[0].ni[20].x" 26.131816864013672;
-	setAttr ".tgi[0].ni[20].y" -1181.655029296875;
-	setAttr ".tgi[0].ni[20].nvs" 1923;
-	setAttr ".tgi[0].ni[21].x" -450.26443481445313;
-	setAttr ".tgi[0].ni[21].y" -1356.11669921875;
-	setAttr ".tgi[0].ni[21].nvs" 18304;
-	setAttr ".tgi[0].ni[22].x" -738.13262939453125;
-	setAttr ".tgi[0].ni[22].y" -1365.636962890625;
-	setAttr ".tgi[0].ni[22].nvs" 1923;
-	setAttr ".tgi[0].ni[23].x" 499.19284057617188;
-	setAttr ".tgi[0].ni[23].y" -1119.89892578125;
-	setAttr ".tgi[0].ni[23].nvs" 18304;
-	setAttr ".tgi[0].ni[24].x" 1029.905029296875;
-	setAttr ".tgi[0].ni[24].y" -576.4212646484375;
-	setAttr ".tgi[0].ni[24].nvs" 18305;
-	setAttr ".tgi[0].ni[25].x" 1368.0177001953125;
-	setAttr ".tgi[0].ni[25].y" -571.8878173828125;
-	setAttr ".tgi[0].ni[25].nvs" 1923;
-	setAttr ".tgi[0].ni[26].x" -332.53451538085938;
-	setAttr ".tgi[0].ni[26].y" -930.60565185546875;
-	setAttr ".tgi[0].ni[26].nvs" 18304;
-	setAttr ".tgi[0].ni[27].x" 430.6824951171875;
-	setAttr ".tgi[0].ni[27].y" -784.10797119140625;
-	setAttr ".tgi[0].ni[27].nvs" 18304;
-	setAttr ".tgi[0].ni[28].x" 499.01849365234375;
-	setAttr ".tgi[0].ni[28].y" -1185.007568359375;
-	setAttr ".tgi[0].ni[28].nvs" 18304;
-	setAttr ".tgi[0].ni[29].x" -323.41006469726563;
-	setAttr ".tgi[0].ni[29].y" -816.7061767578125;
-	setAttr ".tgi[0].ni[29].nvs" 18304;
-	setAttr ".tgi[0].ni[30].x" -319.94729614257813;
-	setAttr ".tgi[0].ni[30].y" -423.45236206054688;
-	setAttr ".tgi[0].ni[30].nvs" 18304;
-	setAttr ".tgi[0].ni[31].x" 45.851894378662109;
-	setAttr ".tgi[0].ni[31].y" -1351.8792724609375;
-	setAttr ".tgi[0].ni[31].nvs" 18304;
-	setAttr ".tgi[0].ni[32].x" 239.86039733886719;
-	setAttr ".tgi[0].ni[32].y" -1583.5645751953125;
-	setAttr ".tgi[0].ni[32].nvs" 1923;
-	setAttr ".tgi[1].tn" -type "string" "Untitled_2";
-	setAttr ".tgi[1].vl" -type "double2" -904.46950639538647 -441.9025547537791 ;
-	setAttr ".tgi[1].vh" -type "double2" 1125.3126721455919 618.60161718055235 ;
+createNode multiplyDivide -n "multiplyDivide4";
+	rename -uid "5C2086EB-41CB-6E7B-D8B8-F2B0D6963C80";
 select -ne :time1;
 	setAttr -av -k on ".cch";
 	setAttr -av -cb on ".ihi";
@@ -712,7 +615,7 @@ select -ne :defaultRenderUtilityList1;
 	setAttr -cb on ".ihi";
 	setAttr -av -k on ".nds";
 	setAttr -cb on ".bnm";
-	setAttr -s 16 ".u";
+	setAttr -s 17 ".u";
 select -ne :defaultRenderingList1;
 	setAttr -k on ".ihi";
 select -ne :defaultTextureList1;
@@ -1044,76 +947,14 @@ connectAttr "T_vrDis03.msg" "hyperLayout1.hyp[29].dn";
 connectAttr "place2dTexture1.msg" "hyperLayout1.hyp[30].dn";
 connectAttr "T_vrVerTex.msg" "hyperLayout1.hyp[31].dn";
 connectAttr "multiplyDivide3.msg" "hyperLayout1.hyp[32].dn";
-connectAttr "multiplyDivide1.o" "multiplyDivide3.i1";
+connectAttr "multiplyDivide4.o" "multiplyDivide3.i1";
 connectAttr "T_vrVerTex.oc" "multiplyDivide3.i2";
 connectAttr "place2dTexture1.o" "T_vrVerTex.uv";
 connectAttr "place2dTexture1.ofs" "T_vrVerTex.uf";
-connectAttr "plus.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[0].dn"
-		;
-connectAttr "GradScoptCTRL03.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[1].dn"
-		;
-connectAttr "RemapRgbToHsv1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[2].dn"
-		;
-connectAttr "M_vrSWT.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[3].dn"
-		;
-connectAttr "multiplyDivide2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[4].dn"
-		;
-connectAttr "RimScopeCTRL.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[5].dn"
-		;
-connectAttr "samplerInfo1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[6].dn"
-		;
-connectAttr "clamp1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[7].dn"
-		;
-connectAttr "M_vrSSS.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[8].dn"
-		;
-connectAttr "RemapRgbToHsv3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[9].dn"
-		;
-connectAttr "multiplyDivide1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[10].dn"
-		;
-connectAttr "M_vrGradient01.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[11].dn"
-		;
-connectAttr "T_vrDis01.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[12].dn"
-		;
-connectAttr "GradScoptCTRL01.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[13].dn"
-		;
-connectAttr "T_vrFAL.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[14].dn"
-		;
-connectAttr "T_vrFRS.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[15].dn"
-		;
-connectAttr "surfaceLuminance1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[16].dn"
-		;
-connectAttr "M_vrRim.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[17].dn"
-		;
-connectAttr "RemapRgbToHsv2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[18].dn"
-		;
-connectAttr "SSS_GradScoptCTRL.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[19].dn"
-		;
-connectAttr "multiplyDivide3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[20].dn"
-		;
-connectAttr "T_vrVerTex.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[21].dn"
-		;
-connectAttr "place2dTexture1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[22].dn"
-		;
-connectAttr "M_vrGradient02.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[23].dn"
-		;
-connectAttr "M_AST_vrRimGrad_out.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[24].dn"
-		;
-connectAttr "M_AST_outSG.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[25].dn"
-		;
-connectAttr "T_vrDis03.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[26].dn"
-		;
-connectAttr "GradScoptCTRL02.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[27].dn"
-		;
-connectAttr "M_vrGradient03.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[28].dn"
-		;
-connectAttr "T_vrDis02.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[29].dn"
-		;
-connectAttr "T_vrUSC.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[30].dn"
-		;
-connectAttr "T_RimGradient.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[31].dn"
-		;
-connectAttr "T_RimSetRange1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[32].dn"
-		;
+connectAttr "M_AST_vrRimGrad.msg" "MayaNodeEditorSavedTabsInfo.tgi[0].ni[0].dn";
+connectAttr "T_RimSetRange1.v" "multiplyDivide4.i1";
+connectAttr "T_RimSetRange1.ox" "multiplyDivide4.i1x";
+connectAttr "multiplyDivide1.o" "multiplyDivide4.i2";
 connectAttr "M_AST_outSG.pa" ":renderPartition.st" -na;
 connectAttr "M_vrSWT.msg" ":defaultShaderList1.s" -na;
 connectAttr "M_AST_vrRimGrad_out.msg" ":defaultShaderList1.s" -na;
@@ -1138,6 +979,7 @@ connectAttr "RemapRgbToHsv3.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "plus.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "clamp1.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "multiplyDivide3.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "multiplyDivide4.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
 connectAttr "GradScoptCTRL01.msg" ":defaultTextureList1.tx" -na;
 connectAttr "T_RimGradient.msg" ":defaultTextureList1.tx" -na;
